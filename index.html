@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rock paper scissors</title>
+</head>
+<body>
+    <script>
+        let computerOptions = ['rock', 'paper', 'scissors'];
+        let computerSelection;
+        let userSelection = '';
+        let userCounter = 0;
+        let computerCounter = 0;
+        function computerPlay() {
+            computerSelection = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+        }
+        
+        
+        function game() {
+            function playRound(userSelection) {
+            computerPlay();
+            if(computerSelection === userSelection) {
+                    return 'both select the same ' + userSelection;
+                } else {
+                    if(computerSelection === 'rock' && userSelection === 'scissors') {
+                        computerCounter++;
+                        return 'You lose! ' + computerSelection + ' beats ' + userSelection;
+                    } else if(computerSelection === 'scissors' && userSelection === 'paper') {
+                        computerCounter++;
+                        return 'You lose! ' + computerSelection + ' beats ' + userSelection;
+                    } else if(computerSelection === 'paper' && userSelection === 'rock') {
+                        computerCounter++;
+                        return 'You lose! ' + computerSelection + ' beats ' + userSelection;
+                    } else {
+                        userCounter++;
+                        return 'You win! ' + userSelection + ' beats ' + computerSelection;
+                    }
+                }
+            }
+
+            function printWinner() {
+                if(computerCounter === userCounter) {
+                    console.log('tie');
+                } else {
+                    if(computerCounter > userCounter) {
+                        console.log('computer wins!');
+                    } else {
+                        console.log('user wins!');
+                    }
+                }
+                console.log('computer score: ' + computerCounter + ' user score: ' + userCounter);
+            }
+
+            for(i = 0; i < 5; i++) {
+                let userSelection = prompt('enter value:');
+                let result = playRound(userSelection.toLowerCase());// guardo el valor retornado de la función
+                console.log(result);
+            }
+
+            printWinner();
+        }
+            
+        
+
+    </script>
+</body>
+</html>
